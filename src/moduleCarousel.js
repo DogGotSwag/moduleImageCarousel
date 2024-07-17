@@ -1,6 +1,5 @@
 import './carouselModule.css';
-import triangle from '../img/triangle.svg'
-
+import triangle from '../img/triangle.svg';
 
 export default (containerClass) => {
   const container = document.querySelector(`${containerClass}`);
@@ -9,28 +8,28 @@ export default (containerClass) => {
   const leftArrowDiv = document.createElement('div');
   leftArrowDiv.classList.add('arrowDiv');
   leftArrowDiv.classList.add('arrowLeft');
-  const leftArrowImg = document.createElement('img')
+  const leftArrowImg = document.createElement('img');
   leftArrowImg.src = triangle;
-  leftArrowDiv.appendChild( leftArrowImg);
+  leftArrowDiv.appendChild(leftArrowImg);
 
   const rightArrowDiv = document.createElement('div');
   rightArrowDiv.classList.add('arrowDiv');
   rightArrowDiv.classList.add('arrowRight');
-  const rightArrowImg = document.createElement('img')
+  const rightArrowImg = document.createElement('img');
   rightArrowImg.src = triangle;
-  rightArrowDiv.appendChild( rightArrowImg);
+  rightArrowDiv.appendChild(rightArrowImg);
 
   container.appendChild(leftArrowDiv);
   container.appendChild(rightArrowDiv);
 
-
   const divBoxes = document.querySelectorAll('.mainContainer .box');
   const divBoxesArray = [...divBoxes];
-  let basis; 
-  if( divBoxesArray.length % 3 === 0){
-    basis = ((divBoxesArray.length-1) / 2) * 100;
+  let basis;
+  if (divBoxesArray.length % 3 === 0) {
+    basis = ((divBoxesArray.length - 1) / 2) * 100;
+  } else {
+    basis = ((divBoxesArray.length/2)*100) - 50;
   }
-
 
   const shiftMin = basis * -1;
   let currentShift = shiftMin;
@@ -38,24 +37,21 @@ export default (containerClass) => {
 
   container.style.cssText = `--shift: ${shiftMin}%;`;
 
-  leftArrowDiv.addEventListener( 'click', () =>{
-    if( currentShift === shiftMin){
-        currentShift = shiftMax;
-    }
-    else{
-        currentShift -= 100;
-    }
-    container.style.cssText = `--shift: ${currentShift}%;`;
-  });
-
-  rightArrowDiv.addEventListener( 'click', () =>{
-    if( currentShift === shiftMax){
-        currentShift = shiftMin;
-    }
-    else{
-        currentShift += 100;
+  leftArrowDiv.addEventListener('click', () => {
+    if (currentShift === shiftMin) {
+      currentShift = shiftMax;
+    } else {
+      currentShift -= 100;
     }
     container.style.cssText = `--shift: ${currentShift}%;`;
   });
 
+  rightArrowDiv.addEventListener('click', () => {
+    if (currentShift === shiftMax) {
+      currentShift = shiftMin;
+    } else {
+      currentShift += 100;
+    }
+    container.style.cssText = `--shift: ${currentShift}%;`;
+  });
 };
