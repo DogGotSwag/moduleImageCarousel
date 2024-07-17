@@ -49,3 +49,12 @@
   height: var(--demImg);
   background-color: gray;
 }
+
+.mainContainer .arrowLeft {
+    left: 10px;
+    transform: rotate(-90deg);
+}
+.mainContainer .arrowRight {
+    right: 10px;
+    transform: rotate(90deg);
+}

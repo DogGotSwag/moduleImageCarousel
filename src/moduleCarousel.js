@@ -8,6 +8,7 @@ export default (containerClass) => {
 
   const leftArrowDiv = document.createElement('div');
   leftArrowDiv.classList.add('arrowDiv');
+  leftArrowDiv.classList.add('arrowLeft');
   const leftArrowImg = document.createElement('img')
   leftArrowImg.src = triangle;
   leftArrowDiv.appendChild( leftArrowImg);
@@ -15,6 +16,7 @@ export default (containerClass) => {
   
   const rightArrowDiv = document.createElement('div');
   rightArrowDiv.classList.add('arrowDiv');
+  rightArrowDiv.classList.add('arrowRight');
   const rightArrowImg = document.createElement('img')
   rightArrowImg.src = triangle;
   rightArrowDiv.appendChild( rightArrowImg);
