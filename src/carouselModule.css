@@ -1,5 +1,6 @@
-.mainContainer, .mainContainer *{
-    box-sizing: border-box;
+.mainContainer,
+.mainContainer * {
+  box-sizing: border-box;
 }
 .mainContainer {
   background-color: whitesmoke;
@@ -21,4 +22,30 @@
   right: var(--shift);
 }
 
+.mainContainer .arrowDiv {
+  position: absolute;
+  --dem: 25px;
+  width: var(--dem);
+  height: var(--dem);
+  background-color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  opacity: 0.3;
+  cursor: pointer;
+}
 
+.mainContainer .arrowDiv:hover{
+    opacity: .6;
+}
+.mainContainer .arrowDiv:active{
+    opacity: 1;
+}
+
+.mainContainer .arrowDiv img {
+  --demImg: 16px;
+  width: var(--demImg);
+  height: var(--demImg);
+  background-color: gray;
+}
