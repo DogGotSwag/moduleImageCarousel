@@ -1,3 +1,5 @@
+import './carouselModule.css';
+
 export default () => {
-    console.log("ehello");
+
 };
