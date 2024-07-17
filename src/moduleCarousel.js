@@ -5,7 +5,6 @@ import triangle from '../img/triangle.svg'
 export default (containerClass) => {
   const container = document.querySelector(`${containerClass}`);
   container.classList.add('mainContainer');
-  container.style.cssText = '--shift: -100%;';
 
   const leftArrowDiv = document.createElement('div');
   leftArrowDiv.classList.add('arrowDiv');
@@ -24,9 +23,21 @@ export default (containerClass) => {
   container.appendChild(leftArrowDiv);
   container.appendChild(rightArrowDiv);
 
-  const shiftMin = -100;
+
+  const divBoxes = document.querySelectorAll('.mainContainer .box');
+  const divBoxesArray = [...divBoxes];
+  let basis; 
+  if( divBoxesArray.length % 3 === 0){
+    basis = ((divBoxesArray.length-1) / 2) * 100;
+  }
+
+
+  const shiftMin = basis * -1;
   let currentShift = shiftMin;
-  const shiftMax = 100;
+  const shiftMax = basis;
+
+  container.style.cssText = `--shift: ${shiftMin}%;`;
+
   leftArrowDiv.addEventListener( 'click', () =>{
     if( currentShift === shiftMin){
         currentShift = shiftMax;
