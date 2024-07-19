@@ -1,6 +1,30 @@
 import './carouselModule.css';
 import triangle from '../img/triangle.svg';
 
+function goLeft( shiftMin , currentShift, shiftMax) {
+  let newCurrent = currentShift;
+  if (newCurrent === shiftMin) {
+    newCurrent = shiftMax;
+  } else {
+    newCurrent -= 100;
+  }
+  const container = document.querySelector('.mainContainer');
+  container.style.cssText = `--shift: ${newCurrent}%;`;
+  return newCurrent;
+}
+
+function goRight(shiftMin, currentShift, shiftMax){
+  let newCurrent = currentShift;
+  if (newCurrent === shiftMax) {
+    newCurrent = shiftMin;
+  } else {
+    newCurrent += 100;
+  }
+  const container = document.querySelector('.mainContainer');
+  container.style.cssText = `--shift: ${newCurrent}%;`;
+  return newCurrent;
+}
+
 export default (containerClass) => {
   const container = document.querySelector(`${containerClass}`);
   container.classList.add('mainContainer');
@@ -38,20 +62,10 @@ export default (containerClass) => {
   container.style.cssText = `--shift: ${shiftMin}%;`;
 
   leftArrowDiv.addEventListener('click', () => {
-    if (currentShift === shiftMin) {
-      currentShift = shiftMax;
-    } else {
-      currentShift -= 100;
-    }
-    container.style.cssText = `--shift: ${currentShift}%;`;
+    currentShift = goLeft(shiftMin, currentShift, shiftMax);
   });
 
   rightArrowDiv.addEventListener('click', () => {
-    if (currentShift === shiftMax) {
-      currentShift = shiftMin;
-    } else {
-      currentShift += 100;
-    }
-    container.style.cssText = `--shift: ${currentShift}%;`;
+    currentShift = goRight(shiftMin, currentShift, shiftMax );
   });
 };
