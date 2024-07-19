@@ -42,11 +42,12 @@
   opacity: 1;
 }
 
-.mainContainer .arrowDiv img {
-  --demImg: 16px;
-  width: var(--demImg);
-  height: var(--demImg);
+.mainContainer .arrowDiv::after {
+  content: '▲';
+  font-size: 20px;
+  position: absolute;
   background-color: gray;
+  bottom: 2px;
 }
 
 .mainContainer .arrowLeft {
