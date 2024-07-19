@@ -64,9 +64,10 @@ export default (containerClass) => {
   let currentShift = shiftMin;
   const shiftMax = basis;
 
-  for( let i = 0; i < divBoxesArray.length; i++){
+  for( let i = 0; i < divBoxesArray.length; i += 1){
     const newCircle = document.createElement('div');
     newCircle.classList.add('navCircle');
+    newCircle.classList.add(`${shiftMin+(i*100)}`);
     circlesContainer.appendChild(newCircle);
   }
 
