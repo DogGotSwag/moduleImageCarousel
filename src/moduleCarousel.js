@@ -52,6 +52,7 @@ export default (containerClass) => {
 
   const divBoxes = document.querySelectorAll('.mainContainer .box');
   const divBoxesArray = [...divBoxes];
+
   let basis;
   if (divBoxesArray.length % 3 === 0) {
     basis = ((divBoxesArray.length - 1) / 2) * 100;
@@ -62,6 +63,12 @@ export default (containerClass) => {
   const shiftMin = basis * -1;
   let currentShift = shiftMin;
   const shiftMax = basis;
+
+  for( let i = 0; i < divBoxesArray.length; i++){
+    const newCircle = document.createElement('div');
+    newCircle.classList.add('navCircle');
+    circlesContainer.appendChild(newCircle);
+  }
 
   container.style.cssText = `--shift: ${shiftMin}%;`;
   let myInterval = setInterval(() => {

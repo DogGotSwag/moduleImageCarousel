@@ -60,15 +60,27 @@
 
 .circleContainer {
   position: absolute;
-  width: 100px;
   height: 30px;
   background-color: gray;
   opacity: .3;
   bottom: 5px;
   border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  padding: 10px;
+  gap: 10px;
 }
 
 .circleContainer:hover {
   background-color: gray;
   opacity: .6;
+}
+
+.navCircle{
+  width: 10px;
+  height: 10px;
+  background-color: whitesmoke;
+  border-radius: 50%;
 }
