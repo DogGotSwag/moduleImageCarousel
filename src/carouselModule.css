@@ -60,16 +60,16 @@
 
 .circleContainer {
   position: absolute;
-  height: 30px;
+  height: auto;
   background-color: gray;
   opacity: .3;
   bottom: 5px;
-  border-radius: 3px;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   width: auto;
-  padding: 10px;
+  padding: 5px 10px 5px 10px;
   gap: 10px;
 }
 
