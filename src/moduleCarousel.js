@@ -1,14 +1,14 @@
 import './carouselModule.css';
 import triangle from '../img/triangle.svg';
 
-function removeDot(){
+function removeDot() {
   const currentDottedCircle = document.querySelector('.dotted');
-  if( currentDottedCircle !== null){
+  if (currentDottedCircle !== null) {
     currentDottedCircle.classList.remove('dotted');
   }
 }
 
-function addDot(currentPostiton){
+function addDot(currentPostiton) {
   const newDottedCircle = document.querySelector(`.P${currentPostiton}`);
   newDottedCircle.classList.add('dotted');
 }
@@ -41,9 +41,6 @@ function goRight(shiftMin, currentShift, shiftMax) {
   return newCurrent;
 }
 
-
-
-
 function addInititalDot(firstDotPosition) {
   const firstDot = document.querySelector(`.P${firstDotPosition}`);
   firstDot.classList.add('dotted');
@@ -62,6 +59,7 @@ export default (containerClass) => {
 
   const rightArrowDiv = document.createElement('div');
   rightArrowDiv.classList.add('arrowDiv');
+
   rightArrowDiv.classList.add('arrowRight');
   const rightArrowImg = document.createElement('img');
   rightArrowImg.src = triangle;
@@ -88,19 +86,35 @@ export default (containerClass) => {
   let currentShift = shiftMin;
   const shiftMax = basis;
 
-  for( let i = 0; i < divBoxesArray.length; i += 1){
+  for (let i = 0; i < divBoxesArray.length; i += 1) {
     const newCircle = document.createElement('div');
     newCircle.classList.add('navCircle');
-    newCircle.classList.add(`P${shiftMin+(i*100)}`);
+    newCircle.classList.add(`P${shiftMin + i * 100}`);
     circlesContainer.appendChild(newCircle);
   }
-
 
   container.style.cssText = `--shift: ${shiftMin}%;`;
   addInititalDot(shiftMin);
   let myInterval = setInterval(() => {
     currentShift = goRight(shiftMin, currentShift, shiftMax);
   }, '5000');
+
+  const navCircle = [...document.querySelectorAll('.navCircle')];
+  navCircle.forEach((key) => {
+    key.addEventListener('click', (event) => {
+      const dotClass = event.target.classList[1];
+      const position = dotClass.slice(1, dotClass.length);
+      currentShift = position;
+      removeDot();
+      addDot(position);
+
+      clearInterval(myInterval);
+      container.style.cssText = `--shift: ${position}%;`;
+      myInterval = setInterval(() => {
+        currentShift = goRight(shiftMin, Number(currentShift), shiftMax);
+      }, '5000');
+    });
+  });
 
   leftArrowDiv.addEventListener('click', () => {
     clearInterval(myInterval);

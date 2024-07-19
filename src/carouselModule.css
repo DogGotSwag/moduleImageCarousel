@@ -83,6 +83,7 @@
   height: 10px;
   background-color: whitesmoke;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .navCircle.dotted{
