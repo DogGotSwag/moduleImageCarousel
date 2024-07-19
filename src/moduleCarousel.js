@@ -1,7 +1,7 @@
 import './carouselModule.css';
 import triangle from '../img/triangle.svg';
 
-function goLeft( shiftMin , currentShift, shiftMax) {
+function goLeft(shiftMin, currentShift, shiftMax) {
   let newCurrent = currentShift;
   if (newCurrent === shiftMin) {
     newCurrent = shiftMax;
@@ -13,7 +13,7 @@ function goLeft( shiftMin , currentShift, shiftMax) {
   return newCurrent;
 }
 
-function goRight(shiftMin, currentShift, shiftMax){
+function goRight(shiftMin, currentShift, shiftMax) {
   let newCurrent = currentShift;
   if (newCurrent === shiftMax) {
     newCurrent = shiftMin;
@@ -52,7 +52,7 @@ export default (containerClass) => {
   if (divBoxesArray.length % 3 === 0) {
     basis = ((divBoxesArray.length - 1) / 2) * 100;
   } else {
-    basis = ((divBoxesArray.length/2)*100) - 50;
+    basis = (divBoxesArray.length / 2) * 100 - 50;
   }
 
   const shiftMin = basis * -1;
@@ -60,12 +60,23 @@ export default (containerClass) => {
   const shiftMax = basis;
 
   container.style.cssText = `--shift: ${shiftMin}%;`;
+  let myInterval = setInterval(() => {
+    currentShift = goRight(shiftMin, currentShift, shiftMax);
+  }, '5000');
 
   leftArrowDiv.addEventListener('click', () => {
+    clearInterval(myInterval);
+    myInterval = setInterval(() => {
+      currentShift = goRight(shiftMin, currentShift, shiftMax);
+    }, '5000');
     currentShift = goLeft(shiftMin, currentShift, shiftMax);
   });
 
   rightArrowDiv.addEventListener('click', () => {
-    currentShift = goRight(shiftMin, currentShift, shiftMax );
+    clearInterval(myInterval);
+    myInterval = setInterval(() => {
+      currentShift = goRight(shiftMin, currentShift, shiftMax);
+    }, '5000');
+    currentShift = goRight(shiftMin, currentShift, shiftMax);
   });
 };
