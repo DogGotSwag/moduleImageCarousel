@@ -84,3 +84,7 @@
   background-color: whitesmoke;
   border-radius: 50%;
 }
+
+.navCircle.dotted{
+  background-color: black;
+}

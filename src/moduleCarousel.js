@@ -25,6 +25,23 @@ function goRight(shiftMin, currentShift, shiftMax) {
   return newCurrent;
 }
 
+function removeDot(){
+  const currentDottedCircle = document.querySelector('.dotted');
+  if( currentDottedCircle !== null){
+    currentDottedCircle.classList.remove('dotted');
+  }
+}
+
+function addDot(currentPostiton){
+  const newDottedCircle = document.querySelector(`.P${currentPostiton}`);
+  newDottedCircle.classList.add('dotted');
+}
+
+function addInititalDot(firstDotPosition) {
+  const firstDot = document.querySelector(`.P${firstDotPosition}`);
+  firstDot.classList.add('dotted');
+}
+
 export default (containerClass) => {
   const container = document.querySelector(`${containerClass}`);
   container.classList.add('mainContainer');
@@ -67,13 +84,17 @@ export default (containerClass) => {
   for( let i = 0; i < divBoxesArray.length; i += 1){
     const newCircle = document.createElement('div');
     newCircle.classList.add('navCircle');
-    newCircle.classList.add(`${shiftMin+(i*100)}`);
+    newCircle.classList.add(`P${shiftMin+(i*100)}`);
     circlesContainer.appendChild(newCircle);
   }
 
+
   container.style.cssText = `--shift: ${shiftMin}%;`;
+  addInititalDot(shiftMin);
   let myInterval = setInterval(() => {
     currentShift = goRight(shiftMin, currentShift, shiftMax);
+    removeDot();
+    addDot(currentShift);
   }, '5000');
 
   leftArrowDiv.addEventListener('click', () => {
