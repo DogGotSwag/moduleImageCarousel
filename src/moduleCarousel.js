@@ -43,8 +43,12 @@ export default (containerClass) => {
   rightArrowImg.src = triangle;
   rightArrowDiv.appendChild(rightArrowImg);
 
+  const circlesContainer = document.createElement('div');
+  circlesContainer.classList.add('circleContainer');
+
   container.appendChild(leftArrowDiv);
   container.appendChild(rightArrowDiv);
+  container.appendChild(circlesContainer);
 
   const divBoxes = document.querySelectorAll('.mainContainer .box');
   const divBoxesArray = [...divBoxes];

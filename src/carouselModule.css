@@ -35,11 +35,11 @@
   cursor: pointer;
 }
 
-.mainContainer .arrowDiv:hover{
-    opacity: .6;
+.mainContainer .arrowDiv:hover {
+  opacity: 0.6;
 }
-.mainContainer .arrowDiv:active{
-    opacity: 1;
+.mainContainer .arrowDiv:active {
+  opacity: 1;
 }
 
 .mainContainer .arrowDiv img {
@@ -50,10 +50,25 @@
 }
 
 .mainContainer .arrowLeft {
-    left: 10px;
-    transform: rotate(-90deg);
+  left: 10px;
+  transform: rotate(-90deg);
 }
 .mainContainer .arrowRight {
-    right: 10px;
-    transform: rotate(90deg);
+  right: 10px;
+  transform: rotate(90deg);
+}
+
+.circleContainer {
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  background-color: gray;
+  opacity: .3;
+  bottom: 5px;
+  border-radius: 3px;
+}
+
+.circleContainer:hover {
+  background-color: gray;
+  opacity: .6;
 }
