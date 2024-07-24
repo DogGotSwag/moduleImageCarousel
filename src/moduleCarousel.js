@@ -14,7 +14,7 @@ function addDot(currentPostiton) {
 
 function goLeft(shiftMin, currentShift, shiftMax) {
   removeDot();
-  let newCurrent = currentShift;
+  let newCurrent = Number(currentShift);
   if (newCurrent === shiftMin) {
     newCurrent = shiftMax;
   } else {
@@ -28,7 +28,7 @@ function goLeft(shiftMin, currentShift, shiftMax) {
 
 function goRight(shiftMin, currentShift, shiftMax) {
   removeDot();
-  let newCurrent = currentShift;
+  let newCurrent = Number(currentShift);
   if (newCurrent === shiftMax) {
     newCurrent = shiftMin;
   } else {

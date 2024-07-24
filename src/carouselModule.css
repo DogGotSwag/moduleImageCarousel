@@ -90,3 +90,13 @@
 .navCircle.dotted{
   background-color: black;
 }
+
+.mainContainer .box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mainContainer .box img{
+  max-height: 100%;
+  width: auto;
+}
